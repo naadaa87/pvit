@@ -1,0 +1,23 @@
+/* 디자인 토큰 — 인라인 스타일용. CSS 변수는 pvit.css 에 같은 값으로 선언되어 있다. */
+export const C = {
+  ink: "#0A0E1A",
+  ink2: "#10162B",
+  card: "#161C33",
+  bg: "#F6F7FB",
+  surface: "#FFFFFF",
+  line: "#E7E9F1",
+  lineDark: "rgba(255,255,255,0.12)",
+  text: "#1A1F30",
+  sub: "#6B7185",
+  subDark: "rgba(255,255,255,0.62)",
+  violet: "#6D5BFF",
+  violet2: "#9B6BFF",
+  violetSoft: "#EFEBFF",
+  coral: "#FF4D6D",
+  coral2: "#FF7A59",
+  amber: "#FFB020",
+  naver: "#03C75A",
+  google: "#4285F4",
+  gold: "#F4B740",
+  green: "#12B76A",
+};

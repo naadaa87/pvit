@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------
+   PVIT 디자인 시스템
+   - 메인 화면은 흰색/연한 무채색 배경 + 바이올렛 포인트
+   - pv-* 클래스는 컴포넌트 공통 스타일, 색상 값은 tokens.js 와 동일
+   ------------------------------------------------------------ */
+
+:root {
+  --pv-ink: #0A0E1A;
+  --pv-ink2: #10162B;
+  --pv-bg: #F6F7FB;
+  --pv-line: #E7E9F1;
+  --pv-text: #1A1F30;
+  --pv-sub: #6B7185;
+  --pv-violet: #6D5BFF;
+  --pv-violet2: #9B6BFF;
+  --pv-violet-soft: #EFEBFF;
+  --pv-coral: #FF4D6D;
+  --pv-coral2: #FF7A59;
+  --pv-naver: #03C75A;
+  --pv-google: #4285F4;
+  --pv-green: #12B76A;
+  --pv-amber: #FFB020;
+}
+
+html, body, #root { margin: 0; padding: 0; }
+body { background: var(--pv-bg); }
+
+#pvit, #pvit * {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Malgun Gothic", sans-serif;
+  box-sizing: border-box;
+}
+#pvit { -webkit-font-smoothing: antialiased; }
+#pvit ::selection { background: var(--pv-violet); color: #fff; }
+#pvit a { color: inherit; }
+
+/* 카드 */
+.pv-card { transition: transform .25s ease, box-shadow .25s ease; }
+.pv-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(16,22,43,.14); }
+
+/* 버튼 */
+.pv-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; cursor: pointer; border: none; transition: all .2s ease; text-decoration: none; }
+.pv-btn:active { transform: scale(.97); }
+.pv-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+.pv-primary { background: linear-gradient(135deg, var(--pv-violet), var(--pv-violet2)); color: #fff; box-shadow: 0 8px 20px rgba(109,91,255,.35); }
+.pv-primary:hover { box-shadow: 0 10px 26px rgba(109,91,255,.5); filter: brightness(1.05); }
+.pv-deal { background: linear-gradient(135deg, var(--pv-coral), var(--pv-coral2)); color: #fff; box-shadow: 0 8px 20px rgba(255,77,109,.35); }
+.pv-naver { background: var(--pv-naver); color: #fff; }
+.pv-naver:hover { filter: brightness(1.07); }
+.pv-goog { background: var(--pv-google); color: #fff; }
+.pv-goog:hover { filter: brightness(1.07); }
+.pv-ghost { background: #fff; color: var(--pv-text); border: 1.5px solid var(--pv-line); }
+.pv-ghost:hover { border-color: var(--pv-violet); color: var(--pv-violet); background: var(--pv-violet-soft); }
+.pv-darkghost { background: rgba(255,255,255,.08); color: #fff; border: 1.5px solid rgba(255,255,255,.22); backdrop-filter: blur(6px); }
+.pv-darkghost:hover { background: rgba(255,255,255,.16); }
+.pv-ink { background: var(--pv-ink); color: #fff; }
+.pv-ink:hover { background: #1b2140; }
+
+/* 칩 */
+.pv-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--pv-line); background: #fff; color: var(--pv-sub); font-weight: 600; font-size: 13.5px; cursor: pointer; transition: all .18s; white-space: nowrap; text-decoration: none; }
+.pv-chip:hover { border-color: var(--pv-violet); color: var(--pv-violet); }
+.pv-chip.on { background: var(--pv-ink); border-color: var(--pv-ink); color: #fff; }
+
+/* 폼 */
+.pv-input, .pv-select, .pv-textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--pv-line); background: #fff; font-size: 14.5px; color: var(--pv-text); outline: none; transition: border .2s, box-shadow .2s; }
+.pv-input:focus, .pv-select:focus, .pv-textarea:focus { border-color: var(--pv-violet); box-shadow: 0 0 0 3px rgba(109,91,255,.15); }
+.pv-input.err, .pv-select.err, .pv-textarea.err { border-color: var(--pv-coral); }
+.pv-textarea { resize: vertical; min-height: 96px; }
+
+/* 링크 */
+.pv-link { color: var(--pv-violet); font-weight: 700; cursor: pointer; text-decoration: none; background: none; border: none; padding: 0; }
+.pv-link:hover { text-decoration: underline; }
+
+/* 모션 */
+@keyframes pvUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.pv-up { animation: pvUp .5s ease both; }
+@keyframes pvBlob { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(18px,-14px) scale(1.06); } }
+.pv-blob { animation: pvBlob 9s ease-in-out infinite; }
+@keyframes pvSpin { to { transform: rotate(360deg); } }
+.pv-spin { animation: pvSpin 1.2s linear infinite; }
+@keyframes pvShimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+.pv-skel { background: linear-gradient(90deg, #EDEFF5 25%, #F7F8FC 50%, #EDEFF5 75%); background-size: 800px 100%; animation: pvShimmer 1.3s infinite linear; border-radius: 12px; }
+
+/* 텍스트 */
+.pv-clamp1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.pv-clamp2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pv-clamp3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* 본문 콘텐츠 (가이드·약관) */
+.pv-prose { font-size: 15.5px; line-height: 1.85; color: var(--pv-text); }
+.pv-prose h2 { font-size: 21px; font-weight: 900; color: var(--pv-ink); margin: 34px 0 10px; letter-spacing: -0.01em; }
+.pv-prose h3 { font-size: 17px; font-weight: 800; color: var(--pv-ink); margin: 24px 0 8px; }
+.pv-prose p { margin: 0 0 14px; }
+.pv-prose ul, .pv-prose ol { padding-left: 22px; margin: 0 0 14px; }
+.pv-prose li { margin: 4px 0; }
+.pv-prose strong { color: var(--pv-ink); font-weight: 800; }
+.pv-prose blockquote { margin: 18px 0; padding: 14px 18px; border-left: 4px solid var(--pv-violet); background: #fff; border-radius: 0 12px 12px 0; color: var(--pv-sub); }
+.pv-prose table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 10px 0 18px; }
+.pv-prose th, .pv-prose td { border: 1px solid var(--pv-line); padding: 9px 12px; text-align: left; vertical-align: top; }
+.pv-prose th { background: #fff; font-weight: 800; color: var(--pv-ink); }
+.pv-prose a { color: var(--pv-violet); font-weight: 700; }
+
+/* 스텝 */
+.pv-step { display: flex; align-items: center; gap: 8px; }
+.pv-step-dot { width: 28px; height: 28px; border-radius: 999px; display: grid; place-items: center; font-size: 12.5px; font-weight: 900; border: 2px solid var(--pv-line); color: var(--pv-sub); background: #fff; flex-shrink: 0; }
+.pv-step.on .pv-step-dot { background: var(--pv-violet); border-color: var(--pv-violet); color: #fff; }
+.pv-step.done .pv-step-dot { background: var(--pv-green); border-color: var(--pv-green); color: #fff; }
+
+/* 토글 스위치 */
+.pv-switch { position: relative; width: 44px; height: 26px; border-radius: 999px; background: #D7DBE8; border: none; cursor: pointer; transition: background .2s; flex-shrink: 0; }
+.pv-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 999px; background: #fff; transition: transform .2s; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+.pv-switch.on { background: var(--pv-violet); }
+.pv-switch.on::after { transform: translateX(18px); }
+
+/* 테이블 */
+.pv-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.pv-table th { text-align: left; font-weight: 800; color: var(--pv-sub); font-size: 12px; padding: 10px 12px; border-bottom: 1px solid var(--pv-line); white-space: nowrap; }
+.pv-table td { padding: 12px; border-bottom: 1px solid var(--pv-line); color: var(--pv-text); vertical-align: middle; }
+.pv-table tr:last-child td { border-bottom: none; }
+
+/* 상태 뱃지 */
+.pv-status { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 800; white-space: nowrap; }
+.pv-status.req { background: rgba(255,176,32,.14); color: #B57E00; }
+.pv-status.ok { background: rgba(18,183,106,.12); color: #0E9A5A; }
+.pv-status.done { background: rgba(109,91,255,.12); color: #5A47E0; }
+.pv-status.cancel { background: rgba(107,113,133,.12); color: #6B7185; }
+.pv-status.hot { background: rgba(255,77,109,.12); color: #E0294E; }
+
+/* 스크롤바 */
+#pvit ::-webkit-scrollbar { height: 6px; width: 8px; }
+#pvit ::-webkit-scrollbar-thumb { background: #C9CEDD; border-radius: 99px; }
+
+/* 인쇄 */
+@media print {
+  header, footer, .pv-noprint { display: none !important; }
+}

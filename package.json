@@ -1,0 +1,29 @@
+{
+  "name": "pvit",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "PVIT 프빗 — 우리끼리 쓰는 모든 프라이빗 공간 플랫폼",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/sitemap.mjs",
+    "build:client": "vite build",
+    "preview": "vite preview",
+    "og": "node scripts/og-image.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.408.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.6",
+    "vite": "^5.3.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
