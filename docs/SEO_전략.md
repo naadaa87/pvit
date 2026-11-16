@@ -66,7 +66,7 @@
 ## 4. 등록 — 사이트를 올린 뒤 꼭 할 것
 
 ### 네이버 서치어드바이저 (searchadvisor.naver.com)
-1. 웹마스터 도구 → 사이트 등록 → `https://pvit.pages.dev` (또는 연결한 도메인)
+1. 웹마스터 도구 → 사이트 등록 → `https://pvit.kr` (또는 연결한 도메인)
 2. 소유 확인: "HTML 태그" 방식 → 발급된 `content` 값을 `index.html` 의 `<meta name="naver-site-verification">` 에 넣고 다시 배포
 3. 요청 → 사이트맵 제출: `https://도메인/sitemap.xml`
 4. 요청 → RSS 제출은 없음(해당 없음). 웹 페이지 수집 요청으로 홈·카테고리·가이드 URL 을 수동 요청

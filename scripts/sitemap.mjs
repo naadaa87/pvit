@@ -10,7 +10,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const DIST = path.join(ROOT, "dist");
-const SITE_URL = (process.env.SITE_URL || "https://pvit.pages.dev").replace(/\/$/, "");
+const SITE_URL = (process.env.SITE_URL || "https://pvit.kr").replace(/\/$/, "");
 const INDEX_UNVERIFIED = process.env.INDEX_UNVERIFIED === "1";
 
 const raw = JSON.parse(fs.readFileSync(path.join(ROOT, "public/data/spaces.json"), "utf8"));

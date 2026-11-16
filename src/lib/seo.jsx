@@ -9,7 +9,7 @@ import React, { createContext, useContext, useEffect } from "react";
 export const SITE = {
   name: "프빗 PVIT",
   shortName: "프빗",
-  url: "https://pvit.pages.dev", // 도메인 연결 후 변경 (예: https://pvit.kr)
+  url: "https://pvit.kr",
   tagline: "우리끼리 쓰는 모든 프라이빗 공간",
   description:
     "파티룸, 프라이빗 사우나, 룸식당, 독채 숙소, 키즈룸, 시네마룸, 포커스룸까지. 남들과 섞이지 않는 프라이빗 공간을 지역·목적·가격대로 찾아보세요.",
@@ -17,7 +17,7 @@ export const SITE = {
   locale: "ko_KR",
   twitter: "",
   // 검색엔진 소유 확인 코드 — 서치어드바이저/서치콘솔에서 발급받아 입력
-  naverVerification: "",
+  naverVerification: "8d5ae1bac74dd90e815e67bca193aed7c9aba777", // index.html 에 실제 태그가 들어있음
   googleVerification: "",
 };
 
