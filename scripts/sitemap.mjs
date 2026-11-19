@@ -52,6 +52,7 @@ const robots = `User-agent: *
 Allow: /
 Disallow: /host/center
 Disallow: /api/
+Disallow: /cdn-cgi/
 
 Sitemap: ${SITE_URL}/sitemap.xml
 `;

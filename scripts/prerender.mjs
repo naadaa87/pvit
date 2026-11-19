@@ -2,7 +2,7 @@
    사전 렌더링 (Static Pre-render)
    - vite build 결과(dist/index.html) 를 템플릿으로, 라우트별 HTML 을 생성한다.
    - react-dom/server 만 사용 → 브라우저·Playwright 불필요 → Cloudflare Pages 빌드 환경에서 그대로 동작
-   - 결과: dist/<route>/index.html  (예: dist/category/party/index.html)
+   - 결과: dist/<route>.html  (예: dist/category/party.html → /category/party 로 열림)
    ------------------------------------------------------------ */
 import fs from "node:fs";
 import path from "node:path";
@@ -47,9 +47,12 @@ for (const route of routes) {
     let out = template
       .replace(/<!--pvit-head-->[\s\S]*?<!--\/pvit-head-->/, `<!--pvit-head-->\n    ${head}\n    <!--/pvit-head-->`)
       .replace("<!--pvit-app-->", esc(html));
-    const dir = route === "/" ? DIST : path.join(DIST, route);
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, "index.html"), out, "utf8");
+    // /category/party → dist/category/party.html
+    // (폴더/index.html 로 내보내면 Cloudflare Pages 가 주소 끝에 '/' 를 붙여 넘기는데,
+    //  대표 주소·사이트맵·내부 링크는 '/' 없는 주소라 서치 콘솔에 '리디렉션이 포함된 페이지'로 잡힌다)
+    const file = route === "/" ? path.join(DIST, "index.html") : path.join(DIST, route.replace(/^\//, "") + ".html");
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, out, "utf8");
     ok++;
   } catch (e) {
     fail++;
